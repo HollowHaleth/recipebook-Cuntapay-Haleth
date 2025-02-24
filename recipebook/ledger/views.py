@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-pes_data = {
+recipes_data = {
     "recipes": [
         {
             "name": "Recipe 1",
@@ -28,3 +28,11 @@ pes_data = {
         }
     ]
 }
+
+def recipe_1(request):
+    recipe = recipes_data["recipes"][0]
+    return render(request, 'recipes.html', {"recipe": recipe})
+
+def recipe_2(request):
+    recipe = recipes_data["recipes"][1]
+    return render(request, 'recipes.html', {"recipe": recipe})
