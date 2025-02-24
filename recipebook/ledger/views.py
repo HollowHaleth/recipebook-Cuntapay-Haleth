@@ -28,6 +28,8 @@ recipes_data = {
         }
     ]
 }
+def recipe_list(request):
+    return render(request, 'recipe_list.html', recipes_data)
 
 def recipe_1(request):
     recipe = recipes_data["recipes"][0]
