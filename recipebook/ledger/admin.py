@@ -20,3 +20,7 @@ class RecipeIngredientAdmin(admin.ModelAdmin):
     list_display = ("recipe", "ingredient", "quantity",)
     list_filter = ("recipe", "ingredient",)
     search_fields = ("recipe__name", "ingredient__name",)
+
+admin.site.register(Recipe, RecipeAdmin)
+admin.site.register(Ingredient, IngredientAdmin)
+admin.site.register(RecipeIngredient, RecipeIngredientAdmin)
