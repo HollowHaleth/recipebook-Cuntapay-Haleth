@@ -7,4 +7,4 @@ def recipe_list(request):
 
 def recipe(request, id):
     recipe = Recipe.objects.get(id=id) 
-    return render(request, 'recipes.html', {'recipe': recipe})
+    return render(request, 'recipe.html', {'recipe': recipe})
