@@ -4,6 +4,7 @@
 {% block page_title %}Recipes{% endblock %}
 
 {% block content %}
+    <a href="{% url 'ledger:add_recipe' %}">Create a new recipe</a>
     <ul>
         {% for recipe in recipes %}
             <li><a href="{{ recipe.link }}">{{ recipe.name }}</a></li>
