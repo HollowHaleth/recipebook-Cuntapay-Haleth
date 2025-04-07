@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Add a New Recipe{% endblock %}
+{% block page_title %}Create a New Recipe{% endblock %}
+
+{% block content %}
+    <h2>Create Recipe and Add Ingredients</h2>
+    <h3>Recipe</h3>
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div>
+            <label for="recipe_name"> Name:</label>
+            <input type="text" name="recipe_name" id="recipe_name" required>
+        </div>
+        <button type="submit" name="create_recipe">Create Recipe</button>
+    </form>
+
+    <h3>Ingredient</h3>
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div>
+            <label for="ingredient_name"> Name:</label>
+            <input type="text" name="ingredient_name" id="ingredient_name" required>
+        </div>
+        <button type="submit" name="create_ingredient">Create Ingredient</button>
+    </form>
+
+    <h3>RecipeIngredient</h3>
+    <form method="POST">
+        {% csrf_token %}
+        
+        <div>
+            <label for="quantity">Quantity:</label>
+            <input type="text" name="quantity" id="quantity" required>
+        </div>
+        
+        <div>
+            <label for="ingredient_select">Select Ingredient:</label>
+            <select name="ingredient" id="ingredient_select">
+                <option value="" disabled selected>--------</option>
+                {% for ingredient in ingredients %}
+                    <option value="{{ ingredient.id }}">{{ ingredient.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div>
+            <label for="recipe_select">Select Recipe:</label>
+            <select name="recipe" id="recipe_select">
+                <option value="" disabled selected>--------</option>
+                {% for recipe in recipes %}
+                    <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" name="create_recipe_ingredient">Submit</button>
+    </form>
+{% endblock %}
