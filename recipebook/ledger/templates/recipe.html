@@ -4,10 +4,22 @@
 {% block page_title %}{{ recipe.name }}{% endblock %}
 
 {% block content %}
+    <div>
+        {% if recipe.images.all %}
+            {% for image in recipe.images.all %}
+                <img src="{{ image.image.url }}" alt="{{ image.description }}" />
+            {% endfor %}
+        {% else %}
+        <a href="{% url 'ledger:add_recipe_image' pk=recipe.pk %}">Add an Image</a>
+        {% endif %}
+    </div>
     <p><strong>Author:</strong> {{ recipe.author.username }}</p>
+
     <ul>
         {% for ingredient in recipe.ingredients.all %}
             <li>{{ ingredient.ingredient.name }} - {{ ingredient.quantity }}</li>
         {% endfor %}
     </ul>
+
+    <a href="{% url 'ledger:recipe_list' %}">Back to Recipe List</a>
 {% endblock %}
